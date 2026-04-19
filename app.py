@@ -3,6 +3,16 @@ from transformers import pipeline
 
 st.title("Sentiment Classifier")
 
+st.markdown("""
+### 🧠 How this model works
+Unlike traditional classifiers that simply look for "good" or "bad" words, this model uses **Transfer Learning** with a pre-trained **Transformer (BERT)**. 
+
+**The Difference:**
+*   **Traditional NLP:** Often fails on slang or sarcasm. For example, it sees "badass" and flags it as **Negative** because of the word "bad".
+*   **This Model:** Understands nuance. It recognizes that "badass" is a compliment, resulting in a **Positive** classification.
+""")
+
+
 # Load directly from Hugging Face Hub
 @st.cache_resource
 def load_model():
