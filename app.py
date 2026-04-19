@@ -1,7 +1,7 @@
 import streamlit as st
 from transformers import pipeline
 
-st.title("Sentiment Classifier")
+st.title("Sentiment Classifier 2")
 
 st.markdown("""
 ### 🧠 How this model works
