@@ -12,5 +12,16 @@ classifier = load_model()
 text = st.text_input("Enter a review:")
 
 if text:
-    result = classifier(text)[0]
-    st.write(f"Sentiment: {result['label']} (Confidence: {result['score']:.2f})")
+    prediction = classifier(text)[0] # Get the first result
+    
+    # Create the mapping
+    # Note: If your model outputs "LABEL_1", use that as the key instead
+    label_map = {"1": "Positive", "0": "Negative", "LABEL_1": "Positive", "LABEL_0": "Negative"}
+    
+    # Get the clean label
+    raw_label = prediction['label']
+    clean_label = label_map.get(raw_label, raw_label)
+    
+    score = prediction['score']
+    
+    st.write(f"**Result:** {clean_label} (Confidence: {score:.2f})")
