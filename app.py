@@ -3,8 +3,16 @@ from transformers import pipeline
 
 st.title("Sentiment Classifier 2")
 
+st.write("""
+Traditional NLP models, like the one shown in the screenshot below, often rely on 'Bag of Words'. 
+They don't understand the relationship between words; they only see that 'bad' is usually a negative word. 
+""")
+
+st.image("rev1.png", 
+         caption="Old Model: Fails to understand the context of slang like 'badass'.",
+         use_container_width=True)
+
 st.markdown("""
-### 🧠 How this model works
 Unlike traditional classifiers that simply look for "good" or "bad" words, this model uses **Transfer Learning** with a pre-trained **Transformer (BERT)**. 
 
 **The Difference:**
@@ -25,7 +33,6 @@ if text:
     prediction = classifier(text)[0] # Get the first result
     
     # Create the mapping
-    # Note: If your model outputs "LABEL_1", use that as the key instead
     label_map = {"1": "Positive", "0": "Negative", "LABEL_1": "Positive", "LABEL_0": "Negative"}
     
     # Get the clean label
